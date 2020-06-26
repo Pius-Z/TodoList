@@ -12,6 +12,47 @@ public class TodoList {
     public static LinkedHashMap<String, String> todoList = new LinkedHashMap<>();
 
     public static void main(String[] args){
+
+        Scanner sc = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+        TodoList todolist = new TodoList();
+
+
+        System.out.println("Welcome To The TodoList!\n" +
+                "请输入代号进行相关操作：\n" +
+                "1：添加事项\n" +
+                "2：删除事项\n" +
+                "3：修改待办事项状态\n" +
+                "4：显示当前列表\n" +
+                "5：退出");
+        while (true) {
+            System.out.println("请输入代号：");
+            int order = sc.nextInt();
+            String task;
+
+            if (order == 1) {
+                System.out.println("请输入要添加的事项：");
+                task = in.nextLine();
+                todolist.add(task);
+                System.out.println("添加成功！");
+            } else if (order == 2) {
+                System.out.println("请输入要删除的事项：");
+                task = in.nextLine();
+                todolist.delete(task);
+                System.out.println("删除成功！");
+            } else if (order == 3) {
+                System.out.println("请输入要修改状态的事项：");
+                task = in.nextLine();
+                todolist.change(task);
+                System.out.println("修改成功！");
+            } else if (order == 4) {
+                System.out.println("当前列表：");
+                todolist.show();
+            } else if (order == 5) {
+                System.out.println("退出成功！");
+                break;
+            }
+        }
     }
 
     //添加待办事项
