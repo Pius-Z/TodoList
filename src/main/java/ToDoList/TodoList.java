@@ -3,10 +3,42 @@
  */
 package ToDoList;
 
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+
 public class TodoList {
 
-    public static void main(String[] args){
+    //采用LinkedHashMap进行存储
+    public static LinkedHashMap<String, String> todoList = new LinkedHashMap<>();
 
+    public static void main(String[] args){
     }
 
+    //添加待办事项
+    public String add(String task){
+        todoList.put(task, "未完成");
+        return task + "未完成";
+    }
+
+    //删除待办事项
+    public int delete(String task){
+        todoList.remove(task);
+        if (todoList.get(task) == null)
+            return 0;
+        else
+            return 1;
+    }
+
+    //修改待办事项状态
+    public String change(String task){
+        todoList.replace(task,"已完成");
+        return task + "已完成";
+    }
+
+    //输出当前列表
+    public void show(){
+        for(String key:todoList.keySet()){
+            System.out.println(key+"---"+todoList.get(key));
+        }
+    }
 }
